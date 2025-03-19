@@ -1,0 +1,50 @@
+.projects-examples {
+    display: flex;
+    padding-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15vh;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.projects-examples-box {
+    flex-wrap: wrap;
+    justify-content: center;
+    scale: 125%;
+    flex: 0 0 calc(25% - 20px);
+    padding: 10px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(150deg, #181818B2 25%, #0C3C01CC 100%);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+}
+.projects-examples-box p {
+    text-align: left;
+    padding: 10px;
+}
+
+.projects-examples-box a {
+    text-decoration: none;
+    color: white;
+}
+
+.projects-button {
+    display: flex;
+    margin: auto;
+    scale: 80%;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+    background: #181818;
+}
+
+.projects-button img {
+    width: 20px;
+    height: auto;
+    margin-left: 5px;
+    padding: 1px;
+}

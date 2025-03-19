@@ -1,0 +1,13 @@
+.about-header {
+    width: 90%;
+    margin: auto;
+    font-size: calc(10px + 2vmin);
+    background: linear-gradient(150deg, #181818B2 25%, #0C3C01CC 100%);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+}
+/* green: #0C3C01CC     gray: #181818B2 */
+.about-header p {
+    padding: 10px;
+    font-size: calc(4px + 2vmin);
+}

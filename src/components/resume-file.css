@@ -1,0 +1,32 @@
+.resume-file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.resume-download {
+    display: flex;
+    scale: 80%;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+    background: #0c3c01;
+    margin-bottom: 10vh;
+
+}
+
+.resume-download img {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    margin-bottom: -5px;
+}
+
+.resume-download a {
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}

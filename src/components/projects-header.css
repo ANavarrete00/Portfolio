@@ -1,0 +1,14 @@
+.projects-header {
+    width: fit-content;
+    margin: auto;
+    padding: 1vh;
+    font-size: calc(10px + 2vmin);
+    background: linear-gradient(150deg, #181818B2 25%, #0C3C01CC 100%);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+}
+
+.about-header p {
+    padding: 10px;
+    font-size: calc(4px + 2vmin);
+}
