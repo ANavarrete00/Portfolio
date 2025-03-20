@@ -19,7 +19,6 @@ export default function Footer() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.125, ease: 'easeInOut'}}>
                 <div className='footer-center'>
-
                     <a target='_blank' rel='noreferrer' href='https://github.com/ANavarrete00'><motion.img className='footer-img' src={github}  alt="github" /></a>
                     <a target='_blank' rel='noreferrer' href='https://www.linkedin.com/in/adrian-navarrete-a080a7286'><motion.img className='footer-img' src={linkedin} alt="linkedin" /></a>
                     <a href='mailto:adrian.navarrete@yahoo.com'><motion.img className='footer-img' src={mail} alt='email' /> </a>
