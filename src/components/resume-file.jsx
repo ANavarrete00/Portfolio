@@ -12,7 +12,7 @@ export default function ResumeFile() {
     return (
         <div className="resume-file">
             <iframe title='resume-page' src="https://docs.google.com/document/d/e/2PACX-1vSMulVixZ9TH8QkRs3_UjqgfpV-h7ds6yccDVVs4TmlwsZVo0ETmrX-3Qhsbble-Ahlwf0P44DIHN6i/pub?embedded=true"
-                    width= '40%' height='870px' style={{ border: 'none' }}>
+                    width= '750vw' height='900vh' style={{ border: 'none', overflow: 'hidden' }}>
             </iframe>
 
                 <motion.div
