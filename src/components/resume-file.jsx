@@ -11,20 +11,19 @@ export default function ResumeFile() {
     }
     return (
         <div className="resume-file">
-            <iframe title='resume-page' src="https://docs.google.com/document/d/e/2PACX-1vSMulVixZ9TH8QkRs3_UjqgfpV-h7ds6yccDVVs4TmlwsZVo0ETmrX-3Qhsbble-Ahlwf0P44DIHN6i/pub?embedded=true"
-                    width= '750vw' height='900vh' style={{ border: 'none', overflow: 'hidden' }}>
+            <iframe className="resume-page" title='resume-page' src="https://docs.google.com/document/d/e/2PACX-1vSMulVixZ9TH8QkRs3_UjqgfpV-h7ds6yccDVVs4TmlwsZVo0ETmrX-3Qhsbble-Ahlwf0P44DIHN6i/pub?embedded=true"
+                    width= '750vw' height='915vh' style={{ border: 'none', overflow: 'hidden' }}>
             </iframe>
-
-                <motion.div
-                    initial='initial'
-                    animate='initial'
-                    whileHover='animate'
-                    transition={{ duration: .5 }}
-                    className='resume-download'>
-                    <a  href={pdf} download={'ANavarrete_Resume.pdf'}>
-                    <motion.img variants={downMotion} src={downIcon} alt='downloadIcon' />
-                    Download Resume</a>
-                </motion.div>
+            <motion.div
+                initial='initial'
+                animate='initial'
+                whileHover='animate'
+                transition={{ duration: .5 }}
+                className='resume-download'>
+                <a  href={pdf} download={'ANavarrete_Resume.pdf'}>
+                <motion.img variants={downMotion} src={downIcon} alt='downloadIcon' />
+                Download Resume</a>
+            </motion.div>
 
         </div>
     )

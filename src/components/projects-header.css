@@ -1,6 +1,7 @@
 .projects-header {
     width: fit-content;
     margin: auto;
+    margin-top: 14vh;
     padding: 1vh;
     font-size: calc(10px + 2vmin);
     background: linear-gradient(150deg, #181818B2 25%, #0C3C01CC 100%);

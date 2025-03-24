@@ -1,8 +1,14 @@
 .resume-file {
     display: flex;
+    margin-top: 15vh;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.resume-page {
+    justify-content: inherit;
+    align-content: center;
 }
 
 .resume-download {

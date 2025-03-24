@@ -25,13 +25,13 @@
 
 .title {
     padding: 15px;
-    font-size: 50px;
+    font-size: calc(40px + 2vmin);
 }
 
 .description p{
     padding: 15px;
-    font-size: 20px;
     justify-content: space-between;
+    font-size: calc(4px + 2vmin);
 }
 
 .headshot {

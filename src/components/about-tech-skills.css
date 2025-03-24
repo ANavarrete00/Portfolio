@@ -7,7 +7,7 @@
 }
 
 .about-tech h1 {
-    font-size: 4rem;
+    font-size: calc(48px + 2vmin);
     padding-bottom: 10vh;
 }
 
@@ -15,12 +15,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 
 .icon-box {
-    scale: 125%;
     flex: 0 0 calc(25% - 30px);
-    padding: 20px;
     margin: 10px;
 }
 

@@ -1,9 +1,9 @@
 .projects-examples {
     display: flex;
-    padding-top: 5vh;
+    margin-top: 13vh;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 15vh;
+    margin-bottom: 25vh;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -12,7 +12,7 @@
     flex-wrap: wrap;
     justify-content: center;
     scale: 125%;
-    flex: 0 0 calc(25% - 20px);
+    flex: 0 0 calc(35% - 20px);
     padding: 10px;
     margin-top: 50px;
     margin-left: auto;
@@ -21,7 +21,12 @@
     backdrop-filter: blur(5px);
     border-radius: 15px;
 }
+
+.projects-examples-box h2 {
+    font-size: calc(9px + 2vmin);
+}
 .projects-examples-box p {
+    font-size: calc(1px + 2vmin);
     text-align: left;
     padding: 10px;
 }
