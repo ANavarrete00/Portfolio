@@ -1,13 +1,13 @@
-# 🌐 Adrian Navarrete - Portfolio
+# Adrian Navarrete - Portfolio
 
 Welcome to my personal portfolio! This is a showcase of my projects, skills, and experience as a developer.
 
-## 🚀 Live Demo
+## Live Demo
 [Visit My Portfolio](https://adrian-navarrete.com)
 
 ---
 
-## 📂 Project Overview
+## Project Overview
 
 This portfolio serves as a professional representation of my work, featuring:
 - **About Me** – A little insight into who I am.
@@ -15,16 +15,15 @@ This portfolio serves as a professional representation of my work, featuring:
 - **Resume** – My experience and skills in an interactive format.
 ---
 
-## 🛠️ Built With
+## Built With
 
-- **Frontend**: React, Tailwind CSS, Framer Motion (for animations)
-- **Routing**: React Router
+- **Frontend**: React, CSS, Framer Motion (for animations)
 - **Media**: Background video, interactive elements
 
 ---
 
-## 📌 Features
+## Features
 
-✅ Responsive Design  
-✅ Smooth Animations  
-✅ Interactive Resume
+- Responsive Design  
+- Smooth Animations  
+- Interactive Resume
