@@ -3,7 +3,7 @@
 Welcome to my personal portfolio! This is a showcase of my projects, skills, and experience as a developer.
 
 ## Live Demo
-[Visit My Portfolio](https://adrian-navarrete.com{target=_blank})
+[Visit My Portfolio](https://adrian-navarrete.com)
 
 ---
 
