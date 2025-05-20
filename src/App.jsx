@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import './components/backgroundVideo.css'
 import './pages/Pages.css'
 import { useLocation } from "react-router-dom";
-import { HashRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
@@ -22,7 +22,7 @@ export default function App () {
     }
 
     return (
-        <HashRouter>
+        <BrowserRouter>
             <ScrollToTop />
             <Routes>
                 <Route exact path='/' element={<Home />} />
@@ -30,6 +30,6 @@ export default function App () {
                 <Route exact path='/projects' element={<Projects />} />
                 <Route exact path='/resume' element={<Resume />} />
             </Routes>
-        </HashRouter>
+        </BrowserRouter>
     )
 }

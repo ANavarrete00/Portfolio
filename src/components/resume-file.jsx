@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react'
-import pdf from '../assets/ANavarrete_Resume.pdf'
+import pdf from '../assets/ANavarrete_Resume2025.pdf'
 import downIcon from '../assets/DownloadIcon.png'
 import './resume-file.css'
 
@@ -11,7 +11,7 @@ export default function ResumeFile() {
     }
     return (
         <div className="resume-file">
-            <iframe className="resume-page" title='resume-page' src="https://docs.google.com/document/d/e/2PACX-1vSMulVixZ9TH8QkRs3_UjqgfpV-h7ds6yccDVVs4TmlwsZVo0ETmrX-3Qhsbble-Ahlwf0P44DIHN6i/pub?embedded=true"
+            <iframe className="resume-page" title='resume-page' src="https://drive.google.com/file/d/17_L-_vtihxnNHrSdW_HfGW2jATNdQHrP/preview"
                     width= '750vw' height='915vh' style={{ border: 'none', overflow: 'hidden' }}>
             </iframe>
             <motion.div
@@ -20,7 +20,7 @@ export default function ResumeFile() {
                 whileHover='animate'
                 transition={{ duration: .5 }}
                 className='resume-download'>
-                <a  href={pdf} download={'ANavarrete_Resume.pdf'}>
+                <a  href={pdf} download={'ANavarrete_Resume2025.pdf'}>
                 <motion.img variants={downMotion} src={downIcon} alt='downloadIcon' />
                 Download Resume</a>
             </motion.div>
