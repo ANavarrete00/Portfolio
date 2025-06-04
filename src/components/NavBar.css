@@ -1,9 +1,9 @@
 .navbar {
     position: fixed;
-    max-height: 20vmax;
     top: 0;
-    background: transparent;
     display: flex;
+    max-height: 20vmax;
+    background: transparent;
     align-items: center;
     justify-content: space-between;
     width: 100%;
@@ -12,45 +12,91 @@
 
 .menu {
     align-items: center;
-    padding-right: 15px;
-    width: 50vw;
+    padding-right: 1vw;
+    width: 40vw;
 }
 
 .menu-items{
-    display: flex;
-    gap: 3vw;
+    display: inline-flex;
     list-style: none;
-    margin: 10px;
     width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
 }
 .item {
+    display: flex;
     justify-content: center;
-    overflow: hidden;
+    align-items: center;
+    overflow: visible;
     border-radius: 5px;
     padding: 5px;
-    height: auto;
-    max-width: 15vmax;
-    max-height: 10vmax;
+    max-height: none;
 }
 
 .item img {
     width: 2vw;
     height: auto;
     margin-right: 5px;
-    margin-bottom: -4%;
 }
 
 .item a{
-    font-size: 1.9vw;
+    font-size: 1.6vw;
     text-decoration: none;
     font-weight: bold;
     color: white;
+    display: flex;
+    align-items: center;
+}
+@media screen and (max-width: 1000px) {
+    .menu{
+        width: 50vw;
+    }
+    .item img{
+        width: 2.2vw;
+    }
+    .item a{
+        font-size: 1.8vw;
+    }
+}
+@media screen and (max-width: 800px) {
+    .menu{
+        width: 60vw;
+    }
+    .item img{
+        width: 2.4vw;
+    }
+    .item a{
+        font-size: 2vw;
+    }
+}
+@media screen and (max-width: 600px) {
+    .menu{
+        width: 70vw;
+    }
+    .item img{
+        width: 2.8vw;
+    }
+    .item a{
+        font-size: 2.4vw;
+    }
+}
+@media screen and (max-width: 400px) {
+    .menu{
+        width: 80vw;
+    }
+    .item img{
+        width: 3vw;
+    }
+    .item a{
+        font-size: 2.6vw;
+    }
 }
 
 .my-logo-img{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    margin-left: 50px;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+    margin-left: 3vw;
     width: 10vmax;
     height: 10vmax;
  }
