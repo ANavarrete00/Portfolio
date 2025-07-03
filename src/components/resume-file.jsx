@@ -11,7 +11,7 @@ export default function ResumeFile() {
     }
     return (
         <div className="resume-file">
-            <iframe className="resume-page" title='resume-page' src="https://drive.google.com/file/d/17_L-_vtihxnNHrSdW_HfGW2jATNdQHrP/preview"
+            <iframe className="resume-page" title='resume-page' src="https://docs.google.com/document/d/e/2PACX-1vRfoQCIKlfBmvHZWEsdbmWQi_99P4wH57F-lpqfPFRA06z_Yy9b3T84t4W1bkNeRl4lbxslm3b3EUqb/pub?embedded=true"
                     width= '750vw' height='915vh' style={{ border: 'none', overflow: 'hidden' }}>
             </iframe>
             <motion.div
