@@ -14,22 +14,16 @@ export default function TurnstileGate() {
 
     async function handleToken(token){
         try {
-            const response = await request.formData();
-            const token = body.get("cf-turnstile-response");
-            const ip = request.headers.get("CF-Connecting-IP");
-            let formData = new FormData();
-            formData.append("secret", SECRET_KEY);
-            formData.append("response", token);
-            formData.append("remoteip", ip);
-
-            const url = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
-            const result = await fetch(url, {
-                body: formData,
+            const response = await fetch("/.netlify/functions/verify-turnstile", {
                 method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ token })
             })
 
-            const outcome = await result.json();
-            if (outcome.success) {
+            const json = await response.json()
+            if(json.success){
                 document.cookie = "verified=true; path=/; maxAge=3600";
                 setVerified(true);
                 window.location.reload();
@@ -46,7 +40,7 @@ export default function TurnstileGate() {
         <div className="fixed inset-0 flex items-center justify-center">
             <div
                 className="cf-turnstile"
-                data-siteKey={process.env.SITE_KEY}
+                data-sitekey={process.env.SITE_KEY}
                 data-callback={handleToken}/>
         </div>
     )
