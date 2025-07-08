@@ -19,20 +19,13 @@ export default function TurnstileGate() {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({ token })
-                })
+                });
 
-                const text = await response.text()
-                console.log("response from verify-turnstile: ", text);
-                try {
-                    const json = JSON.parse(text);
-                    if (json.success) {
-                        document.cookie = "verified=true; path=/; maxAge=3600";
-                        setVerified(true);
-                        window.location.reload();
-                    }
-                }
-                catch (error) {
-                    console.log(error);
+                const json = await response.json()
+                if(json.success){
+                    document.cookie = "verified=true; path=/; max-age=3600";
+                    setVerified(true);
+                    window.location.reload();
                 }
             }
             catch (e) {

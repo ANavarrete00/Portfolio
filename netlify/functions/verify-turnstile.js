@@ -37,7 +37,7 @@ export async function handler(event) {
         const outcome = await result.json();
 
         return {
-            status: 200,
+            statusCode: 200,
             body: JSON.stringify({success: outcome.success}),
         }
     }
@@ -45,7 +45,7 @@ export async function handler(event) {
         console.error("Verification failed: ", e);
 
         return {
-            status: 500,
+            statusCode: 500,
             body: JSON.stringify({ success: false, message: "Error verifying Turnstile token." }),
         };
     }
