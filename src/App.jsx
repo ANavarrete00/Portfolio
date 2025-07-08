@@ -7,9 +7,18 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
 import Resume from './pages/Resume'
+import TurnstileGate from "./components/TurnstileGate";
 
+function getCookie(name) {
+    return document.cookie.split('; ').find((row) => row.startsWith(name + "="));
+}
 
 export default function App () {
+    const isVerified = getCookie('verified');
+    if(!isVerified) {
+        return <TurnstileGate />;
+    }
+
     //Scrolls to top of page when user changes pages
     function ScrollToTop ({ history }) {
         const { pathname } = useLocation();
