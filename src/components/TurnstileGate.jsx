@@ -39,7 +39,7 @@ export default function TurnstileGate() {
     if(verified) return null;
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center">
+        <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
             <div
                 className="cf-turnstile"
                 data-sitekey={SITE_KEY}
