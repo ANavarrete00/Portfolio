@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import {Button} from "@material-tailwind/react";
 
 export default function TurnstileGate() {
     const [token, setToken] = useState("");
@@ -41,9 +40,9 @@ export default function TurnstileGate() {
                     data-siteKey={process.env.SITE_KEY}
                     data-callback={(token) => setToken(token)}
                 ></div>
-                <Button type="submit" disabled={!token || status === "verifying"}>
+                <button type="submit" disabled={!token || status === "verifying"}>
                     {status === "verifying" ? "Verifying..." : "Continue"}
-                </Button>
+                </button>
                 {status === "failed" && <p>Verification failed. Try again.</p>}
             </form>
         </div>
