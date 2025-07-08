@@ -10,22 +10,23 @@ import Resume from './pages/Resume'
 import TurnstileGate from "./components/TurnstileGate";
 
 function getCookie(name) {
-    return document.cookie.split('; ').find((row) => row.startsWith(name + "="));
+    const match = document.cookie.split('; ').find((row) => row.startsWith(name + "="));
+    return match ? match.split("=")[1] : null;
+}
+
+//Scrolls to top of page when user changes pages
+function ScrollToTop ({ history }) {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
 }
 
 export default function App () {
     const isVerified = getCookie('verified');
-
-    //Scrolls to top of page when user changes pages
-    function ScrollToTop ({ history }) {
-        const { pathname } = useLocation();
-
-        useEffect(() => {
-            window.scrollTo(0, 0);
-        }, [pathname]);
-
-        return null;
-    }
 
     if (!isVerified) {
         return <TurnstileGate />;
