@@ -33,7 +33,7 @@ export default function TurnstileGate() {
                     if(script) {
                         script.remove();
                     }
-
+                    window.location.reload();
                     setVerified(true);
                 }
             }
@@ -47,16 +47,10 @@ export default function TurnstileGate() {
         };
     }, []);
 
-    useEffect(() => {
-        if(verified) {
-            window.location.reload();
-        }
-    }, [verified]);
-
     if(verified) return null;
 
     return (
-        <div className="flex items-center justify-center w-full h-full">
+        <div className="fixed inset-0 z-[9999] bg-white flex items-center justify-center">
             <div
                 className="cf-turnstile"
                 data-sitekey={SITE_KEY}
