@@ -27,18 +27,19 @@ export default function App () {
         return null;
     }
 
+    if (!isVerified) {
+        return <TurnstileGate />;
+    }
+
     return (
-        <>
-            {!isVerified && <TurnstileGate />}
-            <BrowserRouter>
-                <ScrollToTop />
-                <Routes>
-                    <Route exact path='/' element={<Home />} />
-                    <Route exact path='/about' element={<About />} />
-                    <Route exact path='/projects' element={<Projects />} />
-                    <Route exact path='/resume' element={<Resume />} />
-                </Routes>
-            </BrowserRouter>
-        </>
+        <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+                <Route exact path='/' element={<Home />} />
+                <Route exact path='/about' element={<About />} />
+                <Route exact path='/projects' element={<Projects />} />
+                <Route exact path='/resume' element={<Resume />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
