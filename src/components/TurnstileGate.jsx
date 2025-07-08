@@ -11,6 +11,9 @@ export default function TurnstileGate() {
         script.async = true;
         document.body.appendChild(script);
 
+        if(verified) {
+            window.location.reload();
+        }
         window.onTurnstileSuccess = async function (token){
             try {
                 const response = await fetch("/.netlify/functions/verify-turnstile", {
@@ -25,7 +28,6 @@ export default function TurnstileGate() {
                 if(json.success){
                     document.cookie = "verified=true; path=/; max-age=3600";
                     setVerified(true);
-                    window.location.reload();
                 }
             }
             catch (e) {
@@ -36,12 +38,12 @@ export default function TurnstileGate() {
         return () => {
             delete window.onTurnstileSuccess;
         };
-    }, []);
+    }, [verified]);
 
     if(verified) return null;
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
+        <div className="flex items-center justify-center w-full h-full">
             <div
                 className="cf-turnstile"
                 data-sitekey={SITE_KEY}
