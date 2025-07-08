@@ -1,15 +1,25 @@
 const fetch = require("node-fetch");
 
-export async function handler(event) {
+export async function handler(event, context) {
 
     const SECRET_KEY = process.env.REACT_APP_TURNSTILE_SECRET_KEY;
+
+    if (!SECRET_KEY) {
+        return {
+            statusCode: 500,
+            body: JSON.stringify({
+                success: false,
+                message: "Missing Turnstile secret key.",
+            }),
+        };
+    }
 
     try {
         const {token} = JSON.parse(event.body);
         const fromData = new URLSearchParams();
         fromData.set("secret", SECRET_KEY);
         fromData.set("response", token);
-        fromData.set("remoteip", event.headers["x-nf-client-connection-ip"]);
+        fromData.set("remoteip", event.headers["x-nf-client-connection-ip" || ""]);
 
         const result = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
             method: "POST",

@@ -37,6 +37,7 @@
     "jest-watch-typeahead": "^1.0.0",
     "mini-css-extract-plugin": "^2.4.5",
     "motion": "^12.4.5",
+    "node-fetch": "^3.3.2",
     "postcss": "^8.4.4",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-loader": "^6.2.1",
@@ -60,7 +61,7 @@
     "terser-webpack-plugin": "^5.2.5",
     "web-vitals": "^2.1.4",
     "webpack": "^5.64.4",
-    "webpack-dev-server": "^4.6.0",
+    "webpack-dev-server": "^5.2.2",
     "webpack-manifest-plugin": "^4.0.2",
     "workbox-webpack-plugin": "^7.3.0"
   },
