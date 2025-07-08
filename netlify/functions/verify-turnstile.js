@@ -6,7 +6,11 @@ export async function handler(event) {
             statusCode: 500,
             body: JSON.stringify({
                 success: false,
-                message: "Missing Turnstile secret key.",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    success: false,
+                    message: "Missing Turnstile secret key.",
+                })
             }),
         };
     }
