@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 export default function TurnstileGate() {
-    const [token, setToken] = useState("");
     const [verified, setVerified] = useState(false);
 
     useEffect(() => {
@@ -12,7 +11,7 @@ export default function TurnstileGate() {
         document.body.appendChild(script);
     }, []);
 
-    const handleToken = async (token) => {
+    async function handleToken(token){
         try {
             const response = await fetch("/.netlify/functions/verify-turnstile", {
                 method: "POST",
