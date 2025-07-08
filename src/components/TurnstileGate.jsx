@@ -40,7 +40,7 @@ export default function TurnstileGate() {
         <div className="fixed inset-0 flex items-center justify-center">
             <div
                 className="cf-turnstile"
-                data-sitekey={process.env.SITE_KEY}
+                data-sitekey={SECRET_KEY}
                 data-callback={handleToken}/>
         </div>
     )
