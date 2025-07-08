@@ -15,9 +15,6 @@ function getCookie(name) {
 
 export default function App () {
     const isVerified = getCookie('verified');
-    if(!isVerified) {
-        return <TurnstileGate />;
-    }
 
     //Scrolls to top of page when user changes pages
     function ScrollToTop ({ history }) {
@@ -31,14 +28,17 @@ export default function App () {
     }
 
     return (
-        <BrowserRouter>
-            <ScrollToTop />
-            <Routes>
-                <Route exact path='/' element={<Home />} />
-                <Route exact path='/about' element={<About />} />
-                <Route exact path='/projects' element={<Projects />} />
-                <Route exact path='/resume' element={<Resume />} />
-            </Routes>
-        </BrowserRouter>
+        <>
+            {!isVerified && <TurnstileGate />}
+            <BrowserRouter>
+                <ScrollToTop />
+                <Routes>
+                    <Route exact path='/' element={<Home />} />
+                    <Route exact path='/about' element={<About />} />
+                    <Route exact path='/projects' element={<Projects />} />
+                    <Route exact path='/resume' element={<Resume />} />
+                </Routes>
+            </BrowserRouter>
+        </>
     )
 }
