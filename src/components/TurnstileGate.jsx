@@ -11,7 +11,7 @@ export default function TurnstileGate() {
         script.async = true;
         document.body.appendChild(script);
 
-        window.onTurnstileSuccess = async function handleToken(token){
+        window.onTurnstileSuccess = async function (token){
             try {
                 const response = await fetch("/.netlify/functions/verify-turnstile", {
                     method: "POST",
