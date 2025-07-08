@@ -1,5 +1,3 @@
-const fetch = require("node-fetch");
-
 export async function handler(event, context) {
 
     const SECRET_KEY = process.env.REACT_APP_TURNSTILE_SECRET_KEY;
