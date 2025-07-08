@@ -11,9 +11,6 @@ export default function TurnstileGate() {
         script.async = true;
         document.body.appendChild(script);
 
-        if(verified) {
-            window.location.reload();
-        }
         window.onTurnstileSuccess = async function (token){
             try {
                 const response = await fetch("/.netlify/functions/verify-turnstile", {
