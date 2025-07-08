@@ -1,6 +1,5 @@
-export async function handler(event, context) {
-
-    const SECRET_KEY = process.env.REACT_APP_TURNSTILE_SECRET_KEY;
+export async function handler(event) {
+    const SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
 
     if (!SECRET_KEY) {
         return {
@@ -13,7 +12,14 @@ export async function handler(event, context) {
     }
 
     try {
-        const {token} = JSON.parse(event.body);
+        const { token } = JSON.parse(event.body || "{}");
+        if(!token) {
+            return {
+                statusCode: 400,
+                body: JSON.stringify({ success: false, message: "Token is invalid." }),
+            };
+        }
+
         const fromData = new URLSearchParams();
         fromData.set("secret", SECRET_KEY);
         fromData.set("response", token);
