@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function TurnstileGate() {
     const [verified, setVerified] = useState(false);
-    const SECRET_KEY = process.env.SECRET_KEY;
+    const SITE_KEY = process.env.SITE_KEY;
 
     useEffect(() => {
         // Load Turnstile script
@@ -40,7 +40,7 @@ export default function TurnstileGate() {
         <div className="fixed inset-0 flex items-center justify-center">
             <div
                 className="cf-turnstile"
-                data-sitekey={SECRET_KEY}
+                data-sitekey={SITE_KEY}
                 data-callback={handleToken}/>
         </div>
     )
