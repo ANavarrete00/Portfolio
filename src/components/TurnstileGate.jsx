@@ -10,31 +10,33 @@ export default function TurnstileGate() {
         script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js"
         script.async = true;
         document.body.appendChild(script);
-    }, []);
 
-    async function handleToken(token){
-        try {
-            const response = await fetch("/.netlify/functions/verify-turnstile", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ token })
-            })
+        window.onTurnstileSuccess = async function handleToken(token){
+            try {
+                const response = await fetch("/.netlify/functions/verify-turnstile", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ token })
+                })
 
-            const json = await response.json()
-            if(json.success){
-                document.cookie = "verified=true; path=/; maxAge=3600";
-                setVerified(true);
-                window.location.reload();
+                const json = await response.json()
+                if(json.success){
+                    document.cookie = "verified=true; path=/; maxAge=3600";
+                    setVerified(true);
+                    window.location.reload();
+                }
             }
-            console.log("Site key:", process.env.REACT_APP_TURNSTILE_SITE_KEY);
-        }
-        catch (e) {
-            console.error("Verification failed: ", e);
-            console.log("Site key:", process.env.REACT_APP_TURNSTILE_SITE_KEY);
-        }
-    };
+            catch (e) {
+                console.error("Verification failed: ", e);
+            }
+        };
+
+        return () => {
+            delete window.onTurnstileSuccess;
+        };
+    }, []);
 
     if(verified) return null;
 
@@ -43,7 +45,7 @@ export default function TurnstileGate() {
             <div
                 className="cf-turnstile"
                 data-sitekey={SITE_KEY}
-                data-callback={handleToken}
+                data-callback={onTurnstileSuccess}
                 data-theme="dark"/>
         </div>
     )
