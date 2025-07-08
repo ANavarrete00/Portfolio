@@ -48,6 +48,12 @@ export default function TurnstileGate() {
         return () => {
             delete window.onTurnstileSuccess;
         };
+    }, []);
+
+    useEffect(() => {
+        if(verified) {
+            window.location.reload();
+        }
     }, [verified]);
 
     if(verified) return null;
