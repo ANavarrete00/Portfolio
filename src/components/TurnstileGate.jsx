@@ -13,19 +13,25 @@ export default function TurnstileGate() {
     }, []);
 
     const handleToken = async (token) => {
-        const response = await fetch("/.netlify/functions/verify-turnstile", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ token })
-        });
+        try {
+            const response = await fetch("/.netlify/functions/verify-turnstile", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ token })
+            });
 
-        const result = await response.json();
+            const result = await response.json();
 
-        if (result.success) {
-            document.cookie = "verified=true; path=/; maxAge=1440";
-            setVerified(true);
+            if (result.success) {
+                document.cookie = "verified=true; path=/; maxAge=3600";
+                setVerified(true);
+                window.location.reload();
+            }
+        }
+        catch (e) {
+            console.error("Verification failed: ", e);
         }
     };
 
@@ -36,7 +42,7 @@ export default function TurnstileGate() {
             <div
                 className="cf-turnstile"
                 data-siteKey={process.env.SITE_KEY}
-                data-callback={(token) => setToken(token)}/>
+                data-callback={handleToken}/>
         </div>
     )
 }
