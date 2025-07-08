@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function TurnstileGate() {
     const [verified, setVerified] = useState(false);
-    const SITE_KEY = process.env.SITE_KEY;
+    const SITE_KEY = process.env.REACT_APP_TURNSTILE_SITE_KEY;
 
     useEffect(() => {
         // Load Turnstile script

@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 
 export async function handler(event) {
     const { token } = JSON.parse(event.body);
-    const SECRET_KEY = process.env.SECRET_KEY;
+    const SECRET_KEY = process.env.REACT_APP_TURNSTILE_SECRET_KEY;
 
     const fromData = new URLSearchParams();
     fromData.set("secret", SECRET_KEY);
