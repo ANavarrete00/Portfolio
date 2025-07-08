@@ -27,6 +27,16 @@ export default function TurnstileGate() {
                 const json = await response.json()
                 if(json.success){
                     document.cookie = "verified=true; path=/; max-age=3600";
+                    const widget = document.querySelector(".cf-turstile");
+                    if(widget) {
+                        widget.remove();
+                    }
+
+                    const script = document.querySelector('script[src*="turstile"]');
+                    if(script) {
+                        script.remove();
+                    }
+
                     setVerified(true);
                 }
             }
