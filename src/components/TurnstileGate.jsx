@@ -45,7 +45,7 @@ export default function TurnstileGate() {
             <div
                 className="cf-turnstile"
                 data-sitekey={SITE_KEY}
-                data-callback={onTurnstileSuccess}
+                data-callback="onTurnstileSuccess"
                 data-theme="dark"/>
         </div>
     )
