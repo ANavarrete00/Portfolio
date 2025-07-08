@@ -28,9 +28,11 @@ export default function TurnstileGate() {
                 setVerified(true);
                 window.location.reload();
             }
+            console.log("Site key:", process.env.REACT_APP_TURNSTILE_SITE_KEY);
         }
         catch (e) {
             console.error("Verification failed: ", e);
+            console.log("Site key:", process.env.REACT_APP_TURNSTILE_SITE_KEY);
         }
     };
 
