@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function TurnstileGate() {
     const [verified, setVerified] = useState(false);
+    const SECRET_KEY = process.env.SECRET_KEY;
 
     useEffect(() => {
         // Load Turnstile script
@@ -13,17 +14,22 @@ export default function TurnstileGate() {
 
     async function handleToken(token){
         try {
-            const response = await fetch("/.netlify/functions/verify-turnstile", {
+            const response = await request.formData();
+            const token = body.get("cf-turnstile-response");
+            const ip = request.headers.get("CF-Connecting-IP");
+            let formData = new FormData();
+            formData.append("secret", SECRET_KEY);
+            formData.append("response", token);
+            formData.append("remoteip", ip);
+
+            const url = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+            const result = await fetch(url, {
+                body: formData,
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ token })
-            });
+            })
 
-            const result = await response.json();
-
-            if (result.success) {
+            const outcome = await result.json();
+            if (outcome.success) {
                 document.cookie = "verified=true; path=/; maxAge=3600";
                 setVerified(true);
                 window.location.reload();
