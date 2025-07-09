@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, {useEffect, useState} from 'react'
 import './components/backgroundVideo.css'
 import './pages/Pages.css'
 import { useLocation } from "react-router-dom";
@@ -26,7 +26,22 @@ function ScrollToTop ({ history }) {
 }
 
 export default function App () {
-    const isVerified = getCookie('verified');
+    const [isVerified, setIsVerified] = useState(null);
+
+    useEffect(() => {
+        const checkVerified = () => {
+            const cookie = getCookie("verified");
+            setIsVerified(cookie === "true");
+        };
+
+        checkVerified();
+        const interval = setInterval(checkVerified, 500);
+        return () => clearInterval(interval);
+    }, []);
+
+    if (isVerified === null) {
+        return null;
+    }
 
     if (!isVerified) {
         return <TurnstileGate />;
