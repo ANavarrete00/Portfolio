@@ -7,12 +7,12 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
 import Resume from './pages/Resume'
-import TurnstileGate from "./components/TurnstileGate";
+/* import TurnstileGate from "./components/TurnstileGate";
 
 function getCookie(name) {
     const match = document.cookie.split('; ').find((row) => row.startsWith(name + "="));
     return match ? match.split("=")[1] : null;
-}
+}*/
 
 //Scrolls to top of page when user changes pages
 function ScrollToTop ({ history }) {
@@ -26,7 +26,7 @@ function ScrollToTop ({ history }) {
 }
 
 export default function App () {
-    const [isVerified, setIsVerified] = useState(null);
+    /*const [isVerified, setIsVerified] = useState(null);
 
     useEffect(() => {
         const checkVerified = () => {
@@ -46,6 +46,7 @@ export default function App () {
     if (!isVerified) {
         return <TurnstileGate />;
     }
+    */
 
     return (
         <BrowserRouter>
