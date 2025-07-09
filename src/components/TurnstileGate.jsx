@@ -23,7 +23,8 @@ export default function TurnstileGate() {
 
                 const json = await response.json()
                 if(json.success){
-                    document.cookie = "verified=true;max-age=3600;path=/";
+                    console.log("Setting cookie...");
+                    document.cookie = "verified=true; max-age=3600; path=/";
                     const widget = document.querySelector(".cf-turnstile");
                     if(widget) {
                         widget.remove();
