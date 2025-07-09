@@ -33,7 +33,6 @@ export default function TurnstileGate() {
                     if(script) {
                         script.remove();
                     }
-                    window.location.reload();
                     setVerified(true);
                 }
             }
