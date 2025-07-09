@@ -10,12 +10,8 @@ import Resume from './pages/Resume'
 import TurnstileGate from "./components/TurnstileGate";
 
 function getCookie(name) {
-    const match = `: ${document.cookie}`;
-    const parts = match.split(`; ${name}=`);
-    if(parts.length === 2) {
-        return parts.pop().split(";").shift();
-    }
-    return null;
+    const match = document.cookie.split('; ').find((row) => row.startsWith(name + "="));
+    return match ? match.split("=")[1] : null;
 }
 
 //Scrolls to top of page when user changes pages
