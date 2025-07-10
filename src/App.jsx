@@ -1,18 +1,12 @@
-import React, { useEffect } from 'react'
+import React, {useEffect, useState} from 'react'
 import './components/backgroundVideo.css'
 import './pages/Pages.css'
-import { useLocation } from "react-router-dom";
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Route, Routes, useLocation} from "react-router-dom";
 import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
 import Resume from './pages/Resume'
-/* import TurnstileGate from "./components/TurnstileGate";
-
-function getCookie(name) {
-    const match = document.cookie.split('; ').find((row) => row.startsWith(name + "="));
-    return match ? match.split("=")[1] : null;
-}*/
+import TurnstileGate from "./components/TurnstileGate";
 
 //Scrolls to top of page when user changes pages
 function ScrollToTop ({ history }) {
@@ -26,17 +20,16 @@ function ScrollToTop ({ history }) {
 }
 
 export default function App () {
-    /*const [isVerified, setIsVerified] = useState(null);
+    const [isVerified, setIsVerified] = useState(null);
 
     useEffect(() => {
-        const checkVerified = () => {
-            const cookie = getCookie("verified");
-            setIsVerified(cookie === "true");
+        const checkVerified = async () => {
+            const result = await fetch("/.netlify/functions/check-verified");
+            const json = await result.json();
+            setIsVerified(json.verified);
         };
 
         checkVerified();
-        const interval = setInterval(checkVerified, 500);
-        return () => clearInterval(interval);
     }, []);
 
     if (isVerified === null) {
@@ -46,7 +39,6 @@ export default function App () {
     if (!isVerified) {
         return <TurnstileGate />;
     }
-    */
 
     return (
         <BrowserRouter>

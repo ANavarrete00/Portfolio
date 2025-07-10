@@ -1,52 +1,38 @@
-export async function handler(event) {
-    const SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
+const SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
+const verifyEndpoint = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
 
-    if (!SECRET_KEY) {
+export async function handler(request) {
+    const { token } = await request.json();
+
+    if(!token) {
         return {
-            statusCode: 500,
-            body: JSON.stringify({
-                success: false,
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({
-                    success: false,
-                    message: "Missing Turnstile secret key.",
-                })
-            }),
+            statusCode: 400,
+            body: JSON.stringify({ success: false, message: "Token is invalid." }),
         };
     }
 
-    try {
-        const { token } = JSON.parse(event.body || "{}");
-        if(!token) {
-            return {
-                statusCode: 400,
-                body: JSON.stringify({ success: false, message: "Token is invalid." }),
-            };
-        }
+    const result = await fetch(verifyEndpoint, {
+        method: "POST",
+        body: `secret=${encodeURIComponent(SECRET_KEY)}&response=${encodeURIComponent(token)}`,
+        headers: {
+            "content-type": "application/x-www-form-urlencoded"
+        },
+    });
 
-        const fromData = new URLSearchParams();
-        fromData.set("secret", SECRET_KEY);
-        fromData.set("response", token);
-        fromData.set("remoteip", event.headers["x-nf-client-connection-ip" || ""]);
+    const data = await result.json();
 
-        const result = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-            method: "POST",
-            body: fromData,
-        });
-
-        const outcome = await result.json();
-
+    if(data.success) {
         return {
-            statusCode: 200,
-            body: JSON.stringify({success: outcome.success}),
+            status: 400,
+            body: JSON.stringify({ success: false }),
         }
     }
-    catch (e) {
-        console.error("Verification failed: ", e);
-
-        return {
-            statusCode: 500,
-            body: JSON.stringify({ success: false, message: "Error verifying Turnstile token." }),
-        };
+    return {
+        status: 200,
+        headers: {
+            "content-type": "application/json",
+            "Set-Cookie": `verified=true; Path=/; HttpOnly; Max-Age=3600; SameSite=Lax; Secure`
+        },
+        body: JSON.stringify({ success: true }),
     }
 }
