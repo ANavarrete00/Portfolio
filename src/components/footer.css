@@ -23,7 +23,7 @@
 .turnstile-wrapper {
     transform: scale(0.75);
     transform-origin: top center;
-    height: 30px;
+    height: 50px;
     overflow: hidden;
     display: inline-block;
 }
