@@ -24,16 +24,13 @@ export default function App () {
 
     useEffect(() => {
         const checkVerified = async () => {
-            const result = await fetch("/.netlify/functions/check-verified");
+            const result = await fetch("/.netlify/functions/check-verified",  {
+                credentials: "include"
+            });
             const json = await result.json();
             setIsVerified(json.verified);
         };
-        if(!isVerified) {
-            checkVerified();
-            const interval = setInterval(checkVerified, 1000);
-            clearInterval(interval);
-        }
-
+        checkVerified();
     }, []);
 
     if (isVerified === null) {
