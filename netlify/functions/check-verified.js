@@ -1,5 +1,5 @@
 export async function handler(event) {
-    const cookies = event.headers.cookie;
+    const cookies = event.headers.cookie || "";
     const verified = cookies.includes("verified=true");
 
     return {
