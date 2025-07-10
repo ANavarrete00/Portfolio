@@ -3,7 +3,7 @@ export async function handleVerified(event) {
     const verified = cookies.includes("verified=true");
 
     return {
-        status: 200,
+        statusCode: 200,
         body: JSON.stringify({ verified }),
     }
 }

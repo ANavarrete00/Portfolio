@@ -6,7 +6,7 @@ export async function handler(event) {
 
     if(!token) {
         return {
-            status: 400,
+            statusCode: 400,
             body: JSON.stringify({ success: false, message: "Token is invalid." }),
         };
     }
@@ -22,7 +22,7 @@ export async function handler(event) {
     const data = await result.json();
 
     return {
-        status: data.success ? 200 : 400,
+        statusCode: data.success ? 200 : 400,
         headers: {
             "content-type": "application/json",
             "Set-Cookie": "verified=true; Path=/; HttpOnly; Max-Age=3600; SameSite=Lax; Secure",
