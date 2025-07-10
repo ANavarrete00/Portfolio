@@ -17,6 +17,7 @@
 .footer-left {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .footer-center {
@@ -36,4 +37,28 @@
 .footer-right {
     display: flex;
     align-items: center;
+}
+@media screen and (max-width: 1000px) {
+    .footer-img{
+        width: 30px;
+        height: 30px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .footer-img{
+        width: 25px;
+        height: 25px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .footer-img{
+        width: 20px;
+        height: 20px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .footer-img{
+        width: 15px;
+        height: 15px;
+    }
 }

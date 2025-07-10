@@ -4,15 +4,17 @@ import './footer.css'
 import linkedin from '../assets/icon-linkedin-100.png'
 import github from '../assets/icon-github-100.png'
 import mail from '../assets/MailIcon.png'
+import {Turnstile} from "@marsidev/react-turnstile";
 
 export default function Footer() {
-
+    const SITE_KEY = process.env.REACT_APP_TURNSTILE_SITE_KEY;
     return (
         <div className="footer">
             <div className='footer-left'>
                 <p>
                     Adrian Navarrete
                 </p>
+                <Turnstile siteKey={ SITE_KEY } theme="dark" size="compact" />
             </div>
             <MotionConfig
                 whileHover={{ scale: 1.1 }}
