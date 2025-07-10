@@ -20,6 +20,13 @@
     gap: 10px;
 }
 
+.turnstile-wrapper {
+    transform: scale(0.85);
+    transform-origin: top left;
+    height: 40px;
+    overflow: hidden;
+}
+
 .footer-center {
     display: flex;
     height: inherit;
