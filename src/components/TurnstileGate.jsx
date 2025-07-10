@@ -16,6 +16,7 @@ export default function TurnstileGate() {
             const data = await response.json()
             if (data.success) {
                 // on success code here
+                window.location.reload();
                 console.log("Server verified token successfully.");
             }
         } catch (e) {
