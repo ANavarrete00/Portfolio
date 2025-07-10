@@ -21,7 +21,7 @@
 }
 
 .turnstile-wrapper {
-    transform: scale(0.5);
+    transform: scale(0.6);
     transform-origin: top center;
     height: 50px;
     overflow: hidden;
