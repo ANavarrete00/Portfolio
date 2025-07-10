@@ -23,9 +23,9 @@
 .turnstile-wrapper {
     transform: scale(0.6);
     transform-origin: top center;
-    height: 50px;
+    height: 40px;
     overflow: hidden;
-    display: inline-block;
+    display: block;
 }
 
 .footer-center {
