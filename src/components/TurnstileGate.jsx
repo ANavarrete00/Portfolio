@@ -3,15 +3,11 @@ import { Turnstile } from '@marsidev/react-turnstile'
 export default function TurnstileGate() {
     const SITE_KEY = process.env.REACT_APP_TURNSTILE_SITE_KEY;
 
-    async function handle(event) {
+    async function handle(token) {
         try {
-            event.preventDefault();
-            const formData = new FormData();
-            const token = formData.get("cf-turnstile-response");
-
             const response = await fetch("/.netlify/functions/verify-turnstile", {
                 method: "POST",
-                body: JSON.stringify({token}),
+                body: JSON.stringify({ token }),
                 headers: {
                     "content-type": "application/json",
                 }
@@ -20,17 +16,16 @@ export default function TurnstileGate() {
             const data = await response.json()
             if (data.success) {
                 // on success code here
+                console.log("Server verified token successfully.");
             }
-            console.log("Manual cookie set: ", document.cookie);
         } catch (e) {
             console.error("Verification failed: ", e);
         }
     }
 
-
     return (
         <>
-            <Turnstile siteKey={ SITE_KEY } />
+            <Turnstile siteKey={ SITE_KEY } onSuccess={ handle } />
         </>
     )
 }
