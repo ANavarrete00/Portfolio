@@ -19,15 +19,7 @@ export default function TurnstileGate() {
 
             const data = await response.json()
             if (data.success) {
-                const widget = document.querySelector(".cf-turnstile");
-                if (widget) {
-                    widget.remove();
-                }
-
-                const script = document.querySelector('script[src*="turnstile"]');
-                if (script) {
-                    script.remove();
-                }
+                // on success code here
             }
             console.log("Manual cookie set: ", document.cookie);
         } catch (e) {
@@ -37,8 +29,8 @@ export default function TurnstileGate() {
 
 
     return (
-        <div onLoad={handle}>
+        <>
             <Turnstile siteKey={ SITE_KEY } />
-        </div>
+        </>
     )
 }

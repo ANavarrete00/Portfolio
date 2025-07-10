@@ -6,7 +6,7 @@ export async function handler(request) {
 
     if(!token) {
         return {
-            statusCode: 400,
+            status: 400,
             body: JSON.stringify({ success: false, message: "Token is invalid." }),
         };
     }
