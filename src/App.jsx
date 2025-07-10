@@ -28,8 +28,12 @@ export default function App () {
             const json = await result.json();
             setIsVerified(json.verified);
         };
+        if(!isVerified) {
+            checkVerified();
+            const interval = setInterval(checkVerified, 1000);
+            clearInterval(interval);
+        }
 
-        checkVerified();
     }, []);
 
     if (isVerified === null) {
