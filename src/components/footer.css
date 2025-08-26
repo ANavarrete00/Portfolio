@@ -70,14 +70,14 @@
 }
 @media screen and (max-width: 800px) {
     .footer-left {
-        gap: 6px;
+        gap: 4px;
     }
 
     .footer-left p {
         font-size: 12px;
     }
     .turnstile-wrapper {
-        transform: scale(0.50);
+        transform: scale(0.40);
     }
     .footer-img{
         width: 25px;
@@ -89,7 +89,7 @@
 }
 @media screen and (max-width: 600px) {
     .footer-left {
-        gap: 4px;
+        gap: 2px;
     }
 
     .footer-left p {
@@ -108,7 +108,7 @@
 }
 @media screen and (max-width: 400px) {
     .footer-left {
-        gap: 2px;
+        gap: 0;
     }
 
     .footer-left p {
