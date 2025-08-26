@@ -28,6 +28,8 @@
 }
 
 .footer-center {
+    position: absolute;
+    left: 50%;
     display: flex;
     height: inherit;
     justify-content: center;
