@@ -25,8 +25,10 @@ export async function handler(event) {
         statusCode: data.success ? 200 : 400,
         headers: {
             "content-type": "application/json",
-            "Set-Cookie": "verified=true; Path=/; HttpOnly; Max-Age=3600; SameSite=Lax; Secure",
+            "Set-Cookie": data.success
+                ? "verified=true; Path=/; HttpOnly; Max-Age=3600; SameSite=Lax; Secure"
+                : "",
         },
-        body: JSON.stringify({ success: true }),
+        body: JSON.stringify({ success: data.success }),
     }
 }

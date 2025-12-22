@@ -7,6 +7,7 @@ export default function TurnstileGate() {
         try {
             const response = await fetch("/functions/verify-turnstile", {
                 method: "POST",
+                credentials: "include",
                 body: JSON.stringify({ token }),
                 headers: {
                     "content-type": "application/json",
@@ -16,8 +17,8 @@ export default function TurnstileGate() {
             const data = await response.json()
             if (data.success) {
                 // on success code here
-                window.location.reload();
                 console.log("Server verified token successfully.");
+                window.location.href = "/";
             }
         } catch (e) {
             console.error("Verification failed: ", e);
