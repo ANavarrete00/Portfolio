@@ -23,14 +23,10 @@ export default function App () {
     const [isVerified, setIsVerified] = useState(null);
 
     useEffect(() => {
-        const checkVerified = async () => {
-            const result = await fetch("/functions/check-verified",  {
-                credentials: "include"
-            });
-            const json = await result.json();
-            setIsVerified(json.verified);
-        };
-        checkVerified();
+        fetch("/functions/check-verified", { credentials: "include" })
+            .then(res => res.json())
+            .then(data => setIsVerified(data.verified))
+            .catch(() => setIsVerified(false));
     }, []);
 
     if (isVerified === null) {
