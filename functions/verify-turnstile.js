@@ -1,34 +1,41 @@
 const SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
 const verifyEndpoint = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
 
-export async function handler(event) {
-    const { token } = JSON.parse(event.body);
+export async function handler({ request }) {
+    const { token } = await request.json();
 
     if(!token) {
-        return {
-            statusCode: 400,
-            body: JSON.stringify({ success: false, message: "Token is invalid." }),
-        };
+        return new Response(
+            JSON.stringify({ success: false }),
+            { status: 400 }
+        );
     }
 
     const result = await fetch(verifyEndpoint, {
         method: "POST",
-        body: `secret=${encodeURIComponent(SECRET_KEY)}&response=${encodeURIComponent(token)}`,
         headers: {
-            "content-type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded",
         },
+        body: new URLSearchParams({
+            secret: SECRET_KEY,
+            response: token,
+        }),
     });
 
     const data = await result.json();
+    const headers = new Headers({
+        "Content-Type": "application/json",
+    });
 
-    return {
-        statusCode: data.success ? 200 : 400,
-        headers: {
-            "content-type": "application/json",
-            "Set-Cookie": data.success
-                ? "verified=true; Path=/; HttpOnly; Max-Age=3600; SameSite=Lax; Secure"
-                : "",
-        },
-        body: JSON.stringify({ success: data.success }),
+    if(data.success) {
+        headers.append(
+            "Set-Cookie",
+            "verified=true; Path=/; HttpOnly; Max-Age=3600; SameSite=Lax"
+        );
     }
+
+    return new Response(
+        JSON.stringify({ success: data.success }),
+        { status: data.success ? 200 : 400, headers}
+    );
 }

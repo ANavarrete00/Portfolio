@@ -1,9 +1,10 @@
-export async function handler(event) {
-    const cookies = event.headers.cookie || "";
-    const verified = cookies.includes("verified=true");
+export async function handler({ request }) {
+    const cookieHeader = request.headers.get("Cookie") || "";
+    const verified = cookieHeader.includes("verified=true");
 
-    return {
-        statusCode: 200,
-        body: JSON.stringify({ verified }),
-    }
+    return new Response(JSON.stringify({ verified }),
+        {
+            headers: { "Content-Type": "application/json" },
+        }
+    );
 }
