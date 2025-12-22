@@ -5,7 +5,7 @@ export default function TurnstileGate() {
 
     async function handle(token) {
         try {
-            const response = await fetch("/.netlify/functions/verify-turnstile", {
+            const response = await fetch("/functions/verify-turnstile", {
                 method: "POST",
                 body: JSON.stringify({ token }),
                 headers: {
