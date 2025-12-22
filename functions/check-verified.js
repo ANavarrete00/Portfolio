@@ -1,4 +1,4 @@
-export async function handler({ request }) {
+export async function onRequest({ request }) {
     const cookieHeader = request.headers.get("Cookie") || "";
     const verified = cookieHeader.includes("verified=true");
 
