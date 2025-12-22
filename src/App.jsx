@@ -24,7 +24,7 @@ export default function App () {
 
     useEffect(() => {
         const checkVerified = async () => {
-            const result = await fetch("/.netlify/functions/check-verified",  {
+            const result = await fetch("/functions/check-verified",  {
                 credentials: "include"
             });
             const json = await result.json();
