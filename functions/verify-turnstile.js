@@ -2,7 +2,7 @@ const SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
 const verifyEndpoint = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
 
 export async function onRequest({ request }) {
-    const { token } = await request.json();
+    const { token } = JSON.parse(request.body);
 
     if(!token) {
         return new Response(
@@ -14,7 +14,7 @@ export async function onRequest({ request }) {
     const result = await fetch(verifyEndpoint, {
         method: "POST",
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+            "content-type": "application/x-www-form-urlencoded",
         },
         body: new URLSearchParams({
             secret: SECRET_KEY,
@@ -22,10 +22,11 @@ export async function onRequest({ request }) {
         }),
     });
 
-    const data = await result.json();
     const headers = new Headers({
-        "Content-Type": "application/json",
+        "content-type": "application/json",
     });
+
+    const data = await result.json();
 
     if(data.success) {
         headers.append(

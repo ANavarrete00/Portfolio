@@ -1,10 +1,12 @@
 export async function onRequest({ request }) {
-    const cookieHeader = request.headers.get("Cookie") || "";
-    const verified = cookieHeader.includes("verified=true");
+    const cookie = request.headers.cookie || "";
+    const verified = cookie.includes("verified=true");
 
     return new Response(JSON.stringify({ verified }),
         {
-            headers: { "Content-Type": "application/json" },
+            statusCode: 200,
+            body: JSON.stringify(verified),
+            headers: { "content-type": "application/json" },
         }
     );
 }
