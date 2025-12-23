@@ -16,10 +16,7 @@ export async function onRequest({ request }) {
         headers: {
             "content-type": "application/x-www-form-urlencoded",
         },
-        body: new URLSearchParams({
-            secret: SECRET_KEY,
-            response: token,
-        }),
+        body: `secret=${encodeURIComponent(SECRET_KEY)}&response=${encodeURIComponent(token)}`,
     });
 
     const headers = new Headers({
