@@ -1,26 +1,22 @@
 const SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
 const verifyEndpoint = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
 
-export async function onRequest({ request }) {
+export async function handler({ request }) {
     const { token } = JSON.parse(request.body);
 
     if(!token) {
-        return new Response(
-            JSON.stringify({ success: false }),
-            { status: 400 }
-        );
+        return {
+            statusCode: 400,
+            body: JSON.stringify({success: false, message: "Token is invalid."}),
+        }
     }
 
     const result = await fetch(verifyEndpoint, {
         method: "POST",
+        body: `secret=${encodeURIComponent(SECRET_KEY)}&response=${encodeURIComponent(token)}`,
         headers: {
             "content-type": "application/x-www-form-urlencoded",
         },
-        body: `secret=${encodeURIComponent(SECRET_KEY)}&response=${encodeURIComponent(token)}`,
-    });
-
-    const headers = new Headers({
-        "content-type": "application/json",
     });
 
     const data = await result.json();
@@ -32,8 +28,12 @@ export async function onRequest({ request }) {
         );
     }
 
-    return new Response(
-        JSON.stringify({ success: data.success }),
-        { status: data.success ? 200 : 400, headers}
-    );
+    return {
+        statusCode: data.success ? 200 : 400,
+        headers: {
+            "content-type": "application/json",
+            "Set-Cookie": "verified=true; Path=/; HttpOnly; Max-Age=3600; SameSite=Lax; Secure",
+        },
+        body: JSON.stringify({ success: true }),
+    }
 }
