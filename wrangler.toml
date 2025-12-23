@@ -2,7 +2,7 @@
 # For more details on how to configure Wrangler, refer to:
 # https://developers.cloudflare.com/workers/wrangler/configuration/
 pages_build_output_dir = "./build"
-name = "Portfolio"
+name = "portfolio"
 compatibility_date = "2025-12-21"
 
 [functions]
