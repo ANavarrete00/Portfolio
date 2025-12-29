@@ -1,7 +1,7 @@
 const SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
 const verifyEndpoint = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
 
-export async function handler({ request }) {
+export async function onRequest({ request }) {
     const { token } = JSON.parse(request.body);
 
     if(!token) {
@@ -22,18 +22,18 @@ export async function handler({ request }) {
     const data = await result.json();
 
     if(data.success) {
-        headers.append(
-            "Set-Cookie",
+        data.headers.append(
+            "set-cookie",
             "verified=true; Path=/; Max-Age=3600; SameSite=Lax"
         );
     }
 
-    return {
+    return new Response({
         statusCode: data.success ? 200 : 400,
         headers: {
             "content-type": "application/json",
-            "Set-Cookie": "verified=true; Path=/; Max-Age=3600; SameSite=Lax; Secure",
+            "set-cookie": "verified=true; Path=/; Max-Age=3600; SameSite=Lax; Secure",
         },
         body: JSON.stringify({ success: true }),
-    }
+    });
 }
