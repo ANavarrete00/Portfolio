@@ -10,7 +10,7 @@ export default function TurnstileGate() {
                 credentials: "include",
                 body: JSON.stringify({ token }),
                 headers: {
-                    "content-type": "application/json",
+                    "Content-Type": "application/json",
                 }
             });
 
