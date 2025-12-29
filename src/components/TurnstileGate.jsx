@@ -18,7 +18,7 @@ export default function TurnstileGate() {
             if (data.success) {
                 // on success code here
                 console.log("Server verified token successfully.");
-                window.location.href = "/";
+                window.location.reload();
             }
         } catch (e) {
             console.error("Verification failed: ", e);
