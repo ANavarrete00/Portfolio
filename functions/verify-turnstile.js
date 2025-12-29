@@ -1,7 +1,6 @@
-const SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
-const verifyEndpoint = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
-
 export async function onRequest({ request }) {
+    const SECRET_KEY = env.TURNSTILE_SECRET_KEY;
+    const verifyEndpoint = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
     const { token } = JSON.parse(request.body);
 
     if(!token) {
