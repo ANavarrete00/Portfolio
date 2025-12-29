@@ -5,35 +5,36 @@ export async function onRequest({ request }) {
     const { token } = JSON.parse(request.body);
 
     if(!token) {
-        return {
-            statusCode: 400,
-            body: JSON.stringify({success: false, message: "Token is invalid."}),
-        }
+        return new Response(JSON.stringify({ success: false }),
+            { statusCode: 400 }
+        );
     }
 
     const result = await fetch(verifyEndpoint, {
         method: "POST",
-        body: `secret=${encodeURIComponent(SECRET_KEY)}&response=${encodeURIComponent(token)}`,
+        body: new URLSearchParams({
+            secret: SECRET_KEY,
+            response: token,
+        }),
         headers: {
-            "content-type": "application/x-www-form-urlencoded",
+            "Content-Type": "application/x-www-form-urlencoded",
         },
     });
 
     const data = await result.json();
 
+    const headers = new Headers({
+        "Content-Type": "application/json",
+    });
+
     if(data.success) {
-        data.headers.append(
-            "set-cookie",
+        headers.append(
+            "Set-Cookie",
             "verified=true; Path=/; Max-Age=3600; SameSite=Lax"
         );
     }
 
-    return new Response({
-        statusCode: data.success ? 200 : 400,
-        headers: {
-            "content-type": "application/json",
-            "set-cookie": "verified=true; Path=/; Max-Age=3600; SameSite=Lax; Secure",
-        },
-        body: JSON.stringify({ success: true }),
-    });
+    return new Response( JSON.stringify({ success: data.success }),
+        { status: data.success ? 200 : 400, headers }
+    );
 }
