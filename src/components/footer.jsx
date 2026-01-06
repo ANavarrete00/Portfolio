@@ -14,9 +14,6 @@ export default function Footer() {
                 <p>
                     Adrian Navarrete
                 </p>
-                <div className="turnstile-wrapper">
-                    <Turnstile siteKey={ SITE_KEY } theme="dark" size="compact" />
-                </div>
             </div>
             <MotionConfig
                 whileHover={{ scale: 1.1 }}
