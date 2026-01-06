@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect/*, useState*/} from 'react'
 import './components/backgroundVideo.css'
 import './pages/Pages.css'
 import {BrowserRouter, Route, Routes, useLocation} from "react-router-dom";
