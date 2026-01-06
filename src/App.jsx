@@ -33,13 +33,13 @@ export default function App () {
         checkVerified();
     }, []);
 
-    if (isVerified === null) {
+    /*if (isVerified === null) {
         return null;
     }
 
     if (!isVerified) {
         return <TurnstileGate />;
-    }
+    } */
 
     return (
         <BrowserRouter>
