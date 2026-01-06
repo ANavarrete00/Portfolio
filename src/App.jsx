@@ -6,7 +6,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
 import Resume from './pages/Resume'
-import TurnstileGate from "./components/TurnstileGate";
+//import TurnstileGate from "./components/TurnstileGate";
 
 //Scrolls to top of page when user changes pages
 function ScrollToTop ({ history }) {
@@ -20,7 +20,7 @@ function ScrollToTop ({ history }) {
 }
 
 export default function App () {
-    const [isVerified, setIsVerified] = useState(null);
+/*    const [isVerified, setIsVerified] = useState(null);
 
     useEffect(() => {
         const checkVerified = async () => {
@@ -33,7 +33,7 @@ export default function App () {
         checkVerified();
     }, []);
 
-    /*if (isVerified === null) {
+    if (isVerified === null) {
         return null;
     }
 
